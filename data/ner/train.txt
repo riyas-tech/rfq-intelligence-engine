@@ -1,0 +1,17 @@
+quote O 
+10M B-NOTIONAL 
+EURUSD B-PAIR 
+sport B-TENOR
+buy O 
+5M B-NOTIONAL 
+GBPUSD B-PAIR 
+tomorrow B-TENOR
+sell O 
+2M B-NOTIONAL 
+USDJPY B-PAIR
+need O 
+price O 
+3M B-NOTIONAL 
+EURUSD B-PAIR 
+next B-TENOR 
+week I-TENOR

@@ -5,6 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "flair>=0.15.1",
+    "google-cloud-aiplatform>=1.148.1",
     "pydantic>=2.13.1",
     "python-dotenv>=1.2.2",
+    "seqeval>=1.2.2",
+    "torch>=2.11.0",
 ]
