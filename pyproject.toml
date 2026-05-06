@@ -1,14 +1,56 @@
 [project]
 name = "rfq-intelligence-engine"
 version = "0.1.0"
-description = "Add your description here"
+description = "Hybrid AI RFQ extraction system"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.11"
+
+# -----------------------------
+# CORE (VERY LIGHT ONLY)
+# -----------------------------
 dependencies = [
-    "flair>=0.15.1",
-    "google-cloud-aiplatform>=1.148.1",
+    "google-cloud-storage>=2.19.0",
     "pydantic>=2.13.1",
     "python-dotenv>=1.2.2",
+]
+
+# -----------------------------
+# OPTIONAL GROUPS
+# -----------------------------
+[project.optional-dependencies]
+
+# -----------------------------
+# 1. TRAINING (Flair + Torch)
+# -----------------------------
+training = [
+    "flair>=0.15.1",
+    "torch>=2.1.0",
     "seqeval>=1.2.2",
-    "torch>=2.11.0",
+    "gensim>=4.3.0"
+]
+
+# -----------------------------
+# 2. INFERENCE (Cloud Run)
+# -----------------------------
+inference = [
+    "flask>=3.1.3",
+    "google-cloud-aiplatform>=1.148.1",
+    "flair>=0.15.1",  # needed for prediction only
+    "torch>=2.1.0"
+]
+
+# -----------------------------
+# 3. DATAFLOW (Beam pipeline)
+# -----------------------------
+dataflow = [
+    "apache-beam[gcp]>=2.70.0",
+    "requests>=2.32.0"
+]
+
+# -----------------------------
+# 4. DEV / TESTING (optional)
+# -----------------------------
+dev = [
+    "pytest>=8.2.0",
+    "black>=24.0.0"
 ]
