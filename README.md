@@ -48,3 +48,17 @@ Response
     Confidence Routing
         ↓
     Vertex AI (if needed)    
+
+
+Upload model 
+docker run -e USE_GCS=true -e GOOGLE_APPLICATION_CREDENTIALS=/app/key.json -v D:\gcp-key\gcp-key.json:/app/key.json  rfq-trainer:optimized    
+
+flair prediction service
+
+https://<cloud run url >/predict
+
+{
+        "text":"quote 10m eurusd spot"
+    }
+
+    
