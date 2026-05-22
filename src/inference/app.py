@@ -1,8 +1,14 @@
 from flask import Flask, request, jsonify
 from src.pipeline.pipeline import process_message
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
+logger = logging.getLogger(__name__)
 
 
 app = Flask(__name__)
+
 
 @app.route("/health")
 def health():

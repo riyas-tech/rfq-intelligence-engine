@@ -4100,6 +4100,10 @@ inference = [
     { name = "google-cloud-aiplatform" },
     { name = "gunicorn" },
 ]
+pipeline = [
+    { name = "flask" },
+    { name = "gunicorn" },
+]
 training = [
     { name = "flair" },
     { name = "gensim" },
@@ -4114,10 +4118,12 @@ requires-dist = [
     { name = "flair", marker = "extra == 'inference'", specifier = ">=0.15.1" },
     { name = "flair", marker = "extra == 'training'", specifier = ">=0.15.1" },
     { name = "flask", marker = "extra == 'inference'", specifier = ">=3.1.3" },
+    { name = "flask", marker = "extra == 'pipeline'", specifier = ">=3.1.3" },
     { name = "gensim", marker = "extra == 'training'", specifier = ">=4.3.0" },
     { name = "google-cloud-aiplatform", marker = "extra == 'inference'", specifier = ">=1.148.1" },
     { name = "google-cloud-storage", specifier = ">=2.19.0" },
     { name = "gunicorn", marker = "extra == 'inference'", specifier = ">=21.2.0" },
+    { name = "gunicorn", marker = "extra == 'pipeline'", specifier = ">=21.2.0" },
     { name = "pydantic", specifier = ">=2.13.1" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.2.0" },
     { name = "python-dotenv", specifier = ">=1.2.2" },
@@ -4125,7 +4131,7 @@ requires-dist = [
     { name = "seqeval", marker = "extra == 'training'", specifier = ">=1.2.2" },
     { name = "torch", marker = "extra == 'training'", specifier = ">=2.1.0" },
 ]
-provides-extras = ["training", "inference", "dataflow", "dev"]
+provides-extras = ["training", "inference", "pipeline", "dataflow", "dev"]
 
 [[package]]
 name = "rsa"

@@ -1,0 +1,38 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# -----------------------------
+# System dependencies
+# -----------------------------
+RUN apt-get update && apt-get install -y \
+    gcc \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# -----------------------------
+# Install uv
+# -----------------------------
+RUN pip install --no-cache-dir uv
+
+# -----------------------------
+# Copy dependency files
+# -----------------------------
+COPY pyproject.toml uv.lock ./
+
+# -----------------------------
+# Install dependencies (creates .venv)
+# -----------------------------
+RUN uv sync --extra pipeline --frozen --no-dev
+
+# -----------------------------
+# Copy source code
+# -----------------------------
+COPY src/ ./src/
+
+ENV PYTHONUNBUFFERED=1
+
+# -----------------------------
+# Run production server from venv
+# -----------------------------
+CMD [".venv/bin/gunicorn", "-b", "0.0.0.0:8080", "src.inference.app:app"]

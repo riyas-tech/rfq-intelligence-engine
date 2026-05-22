@@ -61,4 +61,8 @@ https://<cloud run url >/predict
         "text":"quote 10m eurusd spot"
     }
 
-    
+
+
+
+Training Service -> Flair Prediction Service  -> Pipline Service 
+

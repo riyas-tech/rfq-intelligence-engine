@@ -1,12 +1,11 @@
 from src.preprocessing.cleaner import clean_text
 from src.rules.extractor import extract_trade
-from src.ml.predictor import FlairPredictor
-from src.ml.llm_client import LLMClient
+# from src.ml.llm_client import LLMClient
 from src.ml.llm_confidence import calculate_llm_confidence
+from src.flair_service.flair_client import FlairClient
 
-
-predictor = FlairPredictor()
-llm = LLMClient()
+# llm = LLMClient()
+flairClient = FlairClient()
 
 def compute_ml_confidence(entities):
     if not entities:
@@ -68,7 +67,7 @@ def process_message(message: str):
     rule_conf = rule_trade.confidence
 
     # 2. ML layer
-    ml_entities = predictor.predict(cleaned)
+    ml_entities = flairClient.predict(cleaned)
     ml_conf = compute_ml_confidence(ml_entities)
 
      # 3. LLM fallback (ONLY if low confidence)
